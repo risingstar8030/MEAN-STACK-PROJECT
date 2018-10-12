@@ -1,0 +1,151 @@
+
+<!--div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar" style="margin-top:9vh;">
+        <div class="sidebar-sticky">
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>CURRENT YEAR REPORTS</span>
+                <a class="d-flex align-items-center text-muted" >
+                  <span data-feather="plus-circle"></span>
+                </a>
+              </h6>
+          <ul class="nav flex-column">
+            <li class="nav-item" >
+              <a   class="nav-link" routerLink="/adminnavbar">
+                <span data-feather="home"></span>
+                Home<span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"routerLink="/adminnavbar/upcomingcompany" >
+                <span data-feather="file"></span>
+                Upcoming Company
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" >
+                <span data-feather="shopping-cart"></span>
+                <i class="fas fa-award"></i>Placed students
+              </a>
+            </li>
+          </ul>
+  
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>Previous year reports</span>
+            <a class="d-flex align-items-center text-muted" >
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                 Companies
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="file-text"></span>
+                Placed Students
+              </a>
+            </li>
+          </ul>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Analysis</span>
+              <a class="d-flex align-items-center text-muted" >
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+        </div>
+      </nav> -->
+      
+      <nav id="sidebar" class="navbar-dark bg-dark">
+        <div id="dismiss">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header bg-dark">
+            <h3>PICT , Pune</h3>
+        </div>
+
+       <ul class="list-unstyled components">
+          <ul class="nav flex-column ">
+            <li class="nav-item " >
+              <a   class="nav-link bg-dark" routerLink="/adminnavbar/profile">
+                <span data-feather="home">
+                <i class="fas fa-user-alt"></i>  Profile</span>
+              </a>
+            </li>
+          </ul>
+        </ul> 
+
+        <ul class="list-unstyled components">
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <span>CURRENT YEAR REPORTS</span>
+            <a class="d-flex align-items-center text-muted" >
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+      <ul class="nav flex-column ">
+        <li class="nav-item " >
+          <a   class="nav-link bg-dark" routerLink="/adminnavbar">
+            <span data-feather="home"></span>
+            Home<span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link bg-dark"routerLink="/adminnavbar/upcomingcompany" >
+            <span data-feather="file"></span>
+            Add Upcoming Company
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link bg-dark" routerLink="/adminnavbar/placedStudents" >
+            <span data-feather="shopping-cart"></span>
+            <i class="fas fa-award"></i>Placed students
+          </a>
+        </li>
+      </ul>
+
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>REPORTS SECTION</span>
+        <a class="d-flex align-items-center text-muted" >
+          <span data-feather="plus-circle"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link bg-dark"routerLink="/adminnavbar/previousCompanies">
+            <span data-feather="file-text"></span>
+             Companies
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link bg-dark" routerLink="/adminnavbar/previouslyPlacedStudents">
+            <span data-feather="file-text"></span>
+            Placed Students
+          </a>
+        </li>
+      </ul>
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>ANALYSIS</span>
+          <a class="d-flex align-items-center text-muted" >
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link bg-dark" routerLink="/adminnavbar/chart">
+              <span data-feather="file-text"></span>
+              Graph
+            </a>
+          </li>
+        </ul>
+        </ul>
+
+        
+    </nav>
+
+      <main role="main" class="col-md-12 ml-sm-auto container-fluid" style="margin-top:8rem">
+        <router-outlet></router-outlet>
+  </main>

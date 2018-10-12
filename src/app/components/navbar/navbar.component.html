@@ -1,0 +1,95 @@
+
+<div class="container">
+  <div class="row">
+    <nav id="sidebar" class="navbar-dark bg-dark">
+      <div id="dismiss">
+          <i class="fas fa-arrow-left"></i>
+      </div>
+    
+      <div class="sidebar-header bg-dark">
+          <h3>PICT , Pune</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <ul class="nav flex-column ">
+          <li class="nav-item " >
+            <a   class="nav-link bg-dark" routerLink="/navbar/profile">
+              <span data-feather="home">
+              <i class="fas fa-user-alt"></i>  Profile</span>
+            </a>
+          </li>
+        </ul>
+      </ul> 
+    
+      <ul class="list-unstyled components">
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>CURRENT YEAR REPORTS</span>
+          <a class="d-flex align-items-center text-muted" >
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+    <ul class="nav flex-column ">
+      <li class="nav-item " >
+        <a   class="nav-link bg-dark" routerLink='/navbar'>
+          <span data-feather="home"></span>
+          Home<span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item " >
+          <a   class="nav-link bg-dark" routerLink='/navbar/upcomingCompany'>
+            <span data-feather="home"></span>
+            Upcoming Company<span class="sr-only">(current)</span>
+          </a>
+        </li>
+      <li class="nav-item ">
+        <a class="nav-link bg-dark" routerLink='/navbar/message' >
+          <span data-feather="shopping-cart"></span>
+          <i class="fas fa-award"></i>Messages
+        </a>
+      </li>
+    </ul>
+    
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>REPORTS SECTION</span>
+      <a class="d-flex align-items-center text-muted" >
+        <span data-feather="plus-circle"></span>
+      </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link bg-dark" routerLink="/navbar/company">
+          <span data-feather="file-text"></span>
+           Companies
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link bg-dark" routerLink="/navbar/placedStudents">
+          <span data-feather="file-text"></span>
+          Placed Students
+        </a>
+      </li>
+    </ul>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>ANALYSIS</span>
+        <a class="d-flex align-items-center text-muted" >
+          <span data-feather="plus-circle"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link bg-dark" routerLink="/navbar/chart">
+              <span data-feather="file-text"></span>
+              Chart
+            </a>
+          </li>
+        </ul>
+   </ul>
+    
+      
+    </nav>
+</div>
+</div>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 container-fluid" style="margin-top:8rem">
+      <router-outlet></router-outlet>
+</main>
+

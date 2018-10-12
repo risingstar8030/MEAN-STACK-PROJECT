@@ -1,0 +1,196 @@
+<div class="container-fluid bg" >
+  <div class="row">
+     <div class="col-md-3 col-sm-4 col-xs-12"></div>
+ <div class="col-md-6 col-sm-4 col-xs-12">
+
+
+    <form  class="form-container" style="border:none;margin-left: 8rem">
+        <div class="form-check-inline">
+          <img src='../../../assets/student.png' width="100px" height="100px">
+          <span style="margin:10px;"></span>
+          <label  for="radio1">
+            <input type="radio"   name="user"  (change)="toggleUser()" checked>
+          </label>
+        </div>
+        <span style="margin:20px;"></span>
+        <div class="form-check-inline">
+            <img src='../../../assets/manager.png' width="100px" height="100px">
+            <span style="margin:5px;"></span>
+          <label  for="radio2">
+            <input type="radio"  name="user"  (change)="toggleUser()">
+          </label>
+        </div>
+      </form>
+
+   <form  novalidate class="form-container" id="studentlogin"
+         #frm='ngForm' style="margin-top:3vh"
+          (ngSubmit)='onSubmitStudent(frm)'
+        *ngIf="studentSelected" >
+       <h2>REGISTER STUDENT</h2>
+
+    <div class="form-group">
+      <label  class="heading">Registration ID</label>
+      <input type="text" 
+            class="form-control text-body"
+            name="regid" 
+            placeholder="Registration ID"
+            [(ngModel)]="student.regid"
+            #studentRegid="ngModel"
+            minlength="8"
+            required>
+      <div *ngIf="studentRegid.errors?.required &&
+      studentRegid.touched" class="alert alert-danger">
+         Registration ID is required
+      </div>
+      <div *ngIf="studentRegid.errors?.minlength &&
+      studentRegid.touched" class="alert alert-danger">
+         Registration ID should be atleast 8 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label  class="heading">Branch</label>
+      <select name="branch"  [(ngModel)]='student.branch'
+       class="branches text-body custom-select custom-select mb-3">
+        <option value="comp" selected>COMP</option>
+        <option value="it">IT</option>
+        <option value="entc">EnTC</option>
+      </select>
+     </div>
+
+     <div class="form-group">
+      <label  class="heading">Admission Year</label>
+      <input type="Number"
+              min='2015' max='2018' step="1" value="2015"
+              name="admission-year"
+             class="form-control text-body" 
+             placeholder="Admission Year"
+             [(ngModel)]='student.admyear'
+             #studentAdmyear="ngModel"
+             required>
+      <div *ngIf="studentAdmyear.errors?.required &&
+            studentAdmyear.touched" class="alert alert-danger">
+          Admission year is required
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label  class="heading">Old Password</label>
+      <input type="password" 
+             name="oldpass"
+            class="form-control text-body"
+             placeholder="Password"
+             [(ngModel)]='student.oldpassword'
+             #studentOldpass='ngModel'
+             required>
+      <div *ngIf='studentOldpass.errors?.required &&
+            studentOldpass.touched' class="alert alert-danger">
+            Password is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="heading">New Password</label>
+      <input type="password" 
+              name="newpass"
+              class="form-control" 
+              placeholder="Password"
+              [(ngModel)]='student.newpassword'
+              #studentNewpass='ngModel'
+              minlength="5"
+              required>
+       <div *ngIf='studentNewpass.errors?.required &&
+              studentNewpass.touched' class="alert alert-danger">
+              Password is required
+        </div>
+        <div *ngIf='studentNewpass.errors?.minlength &&
+        studentNewpass.touched' class="alert alert-danger">
+        Password length should be of 5 characters
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block" >Sign Up</button>
+          </div>
+  </form>
+
+  <!-- For Admin Registration -->
+
+  <form novalidate class="form-container" id="adminlogin" #frm1='ngForm'
+      (ngSubmit)='onSubmitAdmin(frm1)'  style="margin-top:3vh"
+      *ngIf="!studentSelected"
+    >
+      <h2>REGISTER ADMIN</h2>
+
+   <div class="form-group">
+     <label  class="heading">Registration ID</label>
+     <input type="text" class="form-control text-body"
+           placeholder="Registration ID"
+           name="adminId"
+           [(ngModel)]='admin.regid'
+           #adminRegid='ngModel'
+           minlength="8"
+           required>
+       <div *ngIf="adminRegid.errors?.required &&
+           adminRegid.touched" class="alert alert-danger">
+             Registration ID is required
+        </div>
+       <div *ngIf="adminRegid.errors?.minlength &&
+             adminRegid.touched" class="alert alert-danger">
+             Registration ID should be atleast 8 characters
+       </div>
+   </div>
+   
+   <div class="form-group">
+     <label  class="heading">Department</label>
+     <select name="branch" [(ngModel)]='admin.department'
+          class="branches text-body custom-select custom-select mb-3">
+       <option value="comp" selected>COMP</option>
+       <option value="it">IT</option>
+       <option value="entc">EnTC</option>
+     </select>
+    </div>
+
+
+   <div class="form-group">
+     <label  class="heading">Old Password</label>
+     <input type="password" class="form-control text-body" 
+              name="Oldpass"
+             placeholder="Password"
+             [(ngModel)]='admin.oldpassword'
+             #adminOldpass='ngModel'
+             required>
+      <div *ngIf='adminOldpass.errors?.required &&
+                adminOldpass.touched' class="alert alert-danger">
+          Password is required
+      </div>
+   </div>
+
+   <div class="form-group">
+     <label  class="heading">New Password</label>
+     <input type="password" class="form-control" name="newpass" 
+            placeholder="Password"
+            [(ngModel)]='admin.newpassword'
+            #adminNewpass='ngModel'
+            minlength="5"
+            required>
+     <div *ngIf='adminNewpass.errors?.required &&
+          adminNewpass.touched' class="alert alert-danger">
+           Password is required
+      </div>
+     <div *ngIf='adminNewpass.errors?.minlength &&
+         adminNewpass.touched' class="alert alert-danger">
+         Password length should be of 5 characters
+     </div>
+   </div>
+   <br>
+   <div class="form-group">
+       <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+         </div>
+ </form>
+
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-12"></div>
+      </div>
+</div>

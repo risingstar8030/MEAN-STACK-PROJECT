@@ -1,0 +1,428 @@
+<div style="margin:2rem">
+<div class="row">
+    
+<!-- Add Company-->
+
+  <div class="col-md-7 " *ngIf="!toggleForm">
+    <h4 class="mb-3">Add Company</h4><br>
+     
+    <form  novalidate #frm="ngForm" 
+    (ngSubmit)="addCompany(frm)">
+
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label>Academic Year</label>
+           <input type="Number"
+           min='2017' max='2018' step="1" 
+           name="year" ngModel
+          class="form-control text-body" (change)="addNextYear(academicYear.value)" 
+          placeholder=" Year" #academicYear
+          required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Academic Year</label>
+           <input type="Number"
+           name="year2" disabled
+          class="form-control text-body" [ngModel]="yearSelected" 
+          placeholder=" Year"
+          required>
+      </div>
+     
+    </div>
+
+
+     <div class="row">
+
+            <div class="col-md-4 mb-3">
+                <label >Date</label>
+                <input type="date" class="form-control" 
+                 placeholder="Date" name="date"
+                ngModel
+                required>
+             </div> 
+
+          <div class="col-md-4 mb-3">
+              <label >Day</label>
+              <select class="custom-select d-block w-100" name="day" 
+                ngModel required >
+                <option value="Monday" selected >Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+                </select>
+               </div>
+
+            <div class="col-md-4 mb-3">
+              <label >Time</label>
+              <input type="time" class="form-control" ngModel 
+                placeholder="Time"  required name="time">
+            </div> 
+          </div> 
+
+     <div class="row">
+        <div class="col-md-6 mb-3">
+          <label >Company Name</label>
+          <input type="text" class="form-control" ngModel
+            placeholder="Company Name" required name="companyName">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label >CTC</label>
+          <input type="Number" class="form-control" ngModel 
+          placeholder="LPA"  required name="ctc">
+        </div>
+      </div>
+
+     <div class="mb-3">
+        <label >Website</label>
+        <div class="input-group">
+          <input type="text" class="form-control" ngModel
+          placeholder="Website" required name="website">
+        </div>
+      </div><hr>  
+
+      <div class="mb-3">
+          <label >Branch</label><br>
+          <div class="form-check-inline" >
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="comp"
+                 [ngModel]="branchSelected">COMP
+              </label>
+            </div>
+            <div class="form-check-inline" >
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="it"
+                 [ngModel]="branchSelected">IT
+              </label>
+            </div>
+            <div class="form-check-inline" >
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="entc"
+                 [ngModel]="branchSelected">E&TC
+              </label>
+            </div>
+            </div> 
+         <hr>
+
+         <div class="mb-3">
+            <label >Has any Criteria ?</label><br>
+            <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio"  name="criteria1" value="criteria"
+                  (change)="toggleCriteria()" checked> YES
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <label class="form-check-label">
+                  <input type="radio"  name="criteria1" value="criteria"
+                  (change)="toggleCriteria()"> NO
+                </label>
+              </div>
+           </div><hr>
+
+      <div class="row" *ngIf='hasCriteria'>
+          <div class="col-md-6 mb-3">
+              <label >Criteria</label>
+              <input type="Number" class="form-control"
+              ngModel name="criteria"
+               placeholder="CGPA" 
+               required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label >Backlog</label>
+              <select class="custom-select d-block w-100" name="backlog"
+                ngModel required>
+                  <option value="allowed" selected>Allowed</option>
+                  <option value="noActiveBacklog">No active backlog</option>
+                  <option value="noPassiveBacklog">No passive backlog</option>
+                  <option value="notAllowed">Not Allowed</option>
+                </select>                   
+               </div>
+      </div><hr *ngIf="hasCriteria">
+
+ 
+
+      <div class="row">
+          <div class="col-md-6 mb-3">
+            <label >Activity No 1</label>
+            <input type="text" class="form-control" name="activity1"
+           ngModel >
+          </div>
+          <div class="col-md-6 mb-3">
+            <label >Venue No 1</label>
+            <input type="textr" class="form-control" name="venue1"
+           ngModel >
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+              <label >Activity No 2</label>
+              <input type="text" class="form-control" name="activity2"
+              ngModel >
+            </div>
+            <div class="col-md-6 mb-3">
+              <label >Venue No 2</label>
+              <input type="text" class="form-control" name="venue2"
+              ngModel >
+            </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-6 mb-3">
+                <label >Activity No 3</label>
+                <input type="text" class="form-control" name='activity3'
+                ngModel >
+              </div>
+              <div class="col-md-6 mb-3">
+                <label >Venue No 3</label>
+                <input type="text" class="form-control" name="venue3"
+                ngModel >
+              </div>
+            </div><hr> 
+
+        <div class="mb-3">
+          <label >Skills Required</label>
+          <div class="input-group">
+            <textarea  class="form-control" rows="7"
+            ngModel name="skills" required></textarea>
+          </div>
+        </div> 
+
+        <button type="submit" class="btn btn-success btn-block"
+        [disabled]=frm.invalid >Submit</button> 
+    </form>
+  </div>
+
+<!-- Edit Company-->
+
+
+
+<div class="col-md-7" *ngIf="toggleForm">
+  <h4 class="mb-3">Edit Company</h4><br>
+   
+  <form  novalidate #editCompany="ngForm" 
+  (ngSubmit)="updateCompany(editCompany)">
+
+
+
+   <div class="row">
+
+          <div class="col-md-4 mb-3">
+              <label >Date</label>
+              <input type="date" class="form-control" 
+               placeholder="Date" name="date"
+              [ngModel]="selectedCompany.date"
+              required>
+           </div> 
+
+         <div class="col-md-4 mb-3">
+            <label >Day</label>
+            <select class="custom-select d-block w-100" name="day" 
+              [ngModel]="selectedCompany.day" required >
+              <option value="Monday" selected >Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+              </select>
+             </div>
+
+          <div class="col-md-4 mb-3">
+            <label >Time</label>
+            <input type="time" class="form-control"
+             [ngModel]="selectedCompany.time" 
+              placeholder="Time"  required name="time">
+          </div>
+        </div>
+
+   <div class="row">
+      <div class="col-md-6 mb-3">
+        <label >Company Name</label>
+        <input type="text" class="form-control" 
+          [ngModel]="selectedCompany.companyName"
+          placeholder="Company Name" required name="companyName">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label >CTC</label>
+        <input type="Number" class="form-control" [ngModel]="selectedCompany.ctc" 
+        placeholder="LPA"  required name="ctc">
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label >Website</label>
+      <div class="input-group">
+        <input type="text" class="form-control" 
+        [ngModel]="selectedCompany.website"
+        placeholder="Website" required name="website">
+      </div>
+    </div><hr>  
+
+    <div class="mb-3">
+        <label >Branch</label><br>
+        <div class="form-check-inline" >
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" name="comp"
+               [ngModel]="selectedCompany.comp">COMP
+            </label>
+          </div>
+          <div class="form-check-inline" >
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" name="it"
+               [ngModel]="selectedCompany.it">IT
+            </label>
+          </div>
+          <div class="form-check-inline" >
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" name="entc"
+               [ngModel]="selectedCompany.entc">E&TC
+            </label>
+          </div>
+          </div> 
+       <hr>
+
+       <div class="mb-3">
+          <label >Has any Criteria ?</label><br>
+          <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio"  
+                 name="criteria1"
+                (change)="toggleCriteriaEditForm()" checked> YES
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label">
+                <input type="radio" 
+                 name="criteria1" 
+                (change)="toggleCriteriaEditForm()"> NO
+              </label>
+            </div>
+         </div><hr>
+
+    <div class="row" *ngIf='hasCriteria1'>
+        <div class="col-md-6 mb-3">
+            <label >Criteria</label>
+            <input type="Number" class="form-control"
+            [ngModel]="selectedCompany.criteria" name="criteria"
+             placeholder="CGPA" 
+             required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label >Backlog</label>
+            <select class="custom-select d-block w-100" name="backlog"
+              [ngModel]="selectedCompany.backlog" required>
+                <option value="allowed" selected>Allowed</option>
+                <option value="noActiveBacklog">No active backlog</option>
+                <option value="noPassiveBacklog">No passive backlog</option>
+                <option value="notAllowed">Not Allowed</option>
+              </select>                   
+             </div>
+    </div><hr *ngIf="hasCriteria1">
+
+    <div class="row">
+        <div class="col-md-6 mb-3">
+          <label >Activity No 1</label>
+          <input type="text" class="form-control" name="activity1"
+         [ngModel]="selectedCompany.activity1" >
+        </div>
+        <div class="col-md-6 mb-3">
+          <label >Venue No 1</label>
+          <input type="text" class="form-control" name="venue1"
+         [ngModel]="selectedCompany.venue1" >
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-md-6 mb-3">
+            <label >Activity No 2</label>
+            <input type="text" class="form-control" name="activity2"
+            [ngModel]="selectedCompany.activity2">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label >Venue No 2</label>
+            <input type="text" class="form-control" name="venue2"
+            [ngModel]="selectedCompany.venue2">
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+              <label >Activity No 3</label>
+              <input type="text" class="form-control" name='activity3'
+              [ngModel]="selectedCompany.activity3">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label >Venue No 3</label>
+              <input type="text" class="form-control" name="venue3"
+              [ngModel]="selectedCompany.venue3">
+            </div>
+          </div><hr> 
+
+      <div class="mb-3">
+        <label >Skills Required</label>
+        <div class="input-group">
+          <textarea  class="form-control" rows="7"
+          [ngModel]="selectedCompany.skills" name="skills" required></textarea>
+        </div>
+      </div> 
+
+      <button type="submit" class="btn btn-success btn-block"
+      [disabled]=editCompany.invalid >Save Changes</button> 
+  </form>
+</div>
+
+<!-- List Of Companies Added-->
+
+<div class="col-md-5  ">
+  <div  >
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <span class="text-muted">Companies Added</span>
+     <span>
+      <input type="text" class="form-control" name="Search" [(ngModel)]="filter"
+      placeholder="Search Company">
+     </span>
+      <span class="badge badge-secondary badge-pill">{{companiesAdded.length}}</span>
+    </h4>
+
+    <ul class="list-group "
+     *ngFor="let company of companiesAdded | filter:filter | paginate: { itemsPerPage: 7, currentPage: p }; let i = index">
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0" style="font-weight:bold;">{{company.companyName}}</h6>
+          <small class="text-muted">{{company.date}}</small>
+        </div>
+        <div class="row">
+        <div style="margin-right:10px">
+          <button (click)="editCompany(company)" class="btn btn-info btn-sm"
+          [disabled]="toggleForm" >Edit</button>
+        </div>
+        <div style="margin-right:10px">
+          <button (click)="deleteCompany(company._id)" class="btn btn-danger btn-sm"
+           >Delete</button>
+        </div>
+        <div style="margin-right:30px">
+          <button  class="btn btn-success btn-sm"
+           (click)="downloadPDF(company)">PDF</button>
+        </div>
+        <div >
+          <label class="form-check-label" >
+            <input type="checkbox" class="form-check-input" 
+            name="showCompanyToStudents" [checked]="company.showCompanyToStudents"
+             (click)="updateShowCompany(company)">Show
+          </label>
+        </div>
+      </div>
+      </li>
+    </ul>
+   <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+  </div>
+</div>
+</div>
+</div> 
+<br><br>

@@ -1,0 +1,38 @@
+<div style="margin:2rem">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap
+ align-items-center pb-2 mb-3  sticky-top ">
+	<div>
+	</div>
+           <h1 class="h2" class="text-info" style="font-weight:bold;">CONGRATULATIONS</h1>
+
+            <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
+   </div>
+
+       <section id="staff" class="py-5 text-center bg-light text-white">
+            <br>
+            <div class="container-fluid">
+
+           <div class="row"  *ngFor="let studentObj of placedStudents
+           | paginate: { itemsPerPage: 1, currentPage: p }" >
+
+           <div class="col-md-3 " *ngFor="let student of studentObj['students'];let i= index" >
+
+              <div class="card" style="width:100%;" >
+                <img class="card-img-top" src="../../../assets/icon.png" alt="Card image" style="width: 100%">
+                <div class="card-body"  style="color: black;padding: 1.25rem">
+                  <h6 class="card-title">{{i+1}}: {{student.firstName}} {{student.lastName}} </h6>
+                  <h6>Branch: {{student.branch | uppercase}}</h6>
+                  <h6>Company :{{studentObj.companyName}}</h6>
+                </div>
+              </div>
+              
+            <br *ngIf='(i+1)%2==0'>
+          </div>
+           </div>
+           </div>
+           <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+    </section>
+          
+          
+</div>

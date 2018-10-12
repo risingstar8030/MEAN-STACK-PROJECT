@@ -1,0 +1,11 @@
+pre {
+    display: block;
+    height: 200px;
+    unicode-bidi: embed;
+    font-family: monospace;
+    white-space: pre;
+}
+
+button:disabled:hover{
+    cursor: not-allowed;
+}

@@ -1,0 +1,171 @@
+<div class="container-fluid" >
+  <div class="col-md-3 col-sm-4 col-xs-12"> </div>
+  <div class="col-md-6 col-sm-4 col-xs-12" style="margin-left: 20rem"> 
+
+    <form  class="form-container" style="border:none;margin-left: 8rem">
+      <div class="form-check-inline">
+        <p>See Company wise</p>
+        <span style="margin:10px;"></span>
+        <label  for="radio1">
+          <input type="radio"   name="user"  (change)="toggleForm()" checked>
+        </label>
+      </div>
+      <span style="margin:20px;"></span>
+      <div class="form-check-inline">
+          <p>See Branch wise</p>      
+          <span style="margin:5px;"></span>
+        <label  for="radio2">
+          <input type="radio"  name="user"  (change)="toggleForm()">
+        </label>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-12"> </div>
+
+</div>
+
+
+
+
+<div style="margin:2rem;" *ngIf='toggle'>
+  <nav class="navbar navbar-expand-sm" style="background-color:#f5f5f5;">
+    <div class="row" style="margin-left: 16rem">
+      <form class="form-inline" >  
+           <div class="input-group">
+                <input type="text" class="form-control" name="Search" [(ngModel)]="filter"
+                 placeholder="Search Company">
+            
+              </div>
+      </form>
+      
+      <form class="form-inline" #frm="ngForm" style="margin-left:2rem"
+      (ngSubmit)="showCompanies(frm)" >
+
+          <div class="input-group">
+            <input type="Number"
+            min='2017' max='2018' step="1" 
+            name="year" ngModel style="width: 230px;"
+           class="form-control text-body" (change)="addNextYear(academicYear.value)" 
+           placeholder=" Year" #academicYear
+           required>
+        </div>
+
+         <div class="input-group" style="margin-left:1rem">
+          <input type="Number"
+          name="year2" disabled
+         class="form-control text-body" [ngModel]="yearSelected" 
+         placeholder=" Year"
+         required>
+      </div>
+
+         <button type="submit" style="margin-left:1rem" [disabled]=frm.invalid
+          class="btn btn-success form-control">Submit</button>
+      </form>
+    </div> 
+    </nav>
+
+    <table class="table table-striped">
+      <thead>
+        <tr class="bg-dark" style="color:#fff">
+          <th>Name</th>
+          <th>Website</th>
+          <th>Visited Date</th>
+          <th>Package(LPA)</th>
+          <th>Details</th>
+          <th>Show Placed Students</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companiesList | filter:filter| paginate: { itemsPerPage: 10, currentPage: p };">
+          <td>{{company.companyName}}</td>
+          <td>{{company.website}}</td>
+          <td>{{company.date}}</td>
+          <td>{{company.ctc}}</td>
+          <td><a  class="btn btn-secondary btn-sm" [routerLink]="['/adminnavbar/company/'+company._id]">
+            <i class="fas fa-angle-double-right"></i>See Details</a>
+          </td>
+          <td>
+              <input type="checkbox" class="form-check-input" 
+              name="showCompanyToStudents" [checked]="company.showPlacedStudents"
+               (click)="updateShowCompany(company)">Show
+          </td>
+        </tr>
+      </tbody>
+     <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+  
+    </table>
+</div>
+
+<!-- For all Students-->
+
+<div style="margin:2rem;" *ngIf='!toggle'>
+    <nav class="navbar navbar-expand-sm" style="background-color:#f5f5f5;">
+      <div class="row" style="margin-left: 7rem">
+        <form class="form-inline" >  
+             <div class="input-group">
+                  <input type="text" class="form-control" name="Search" [(ngModel)]="filter"
+                   placeholder="Search Student">
+              
+                </div>
+        </form>
+        
+        <form class="form-inline" #frm1="ngForm" style="margin-left: 1rem"
+        (ngSubmit)="showPlacedStudents(frm1)" >
+  
+            <div class="input-group">
+              <input type="Number"
+              min='2017' max='2018' step="1" 
+              name="year" ngModel  style="width: 230px;"
+             class="form-control text-body" (change)="addNextYear1(academicYear1.value)" 
+             placeholder=" Year" #academicYear1
+             required>
+          </div>
+  
+           <div class="input-group" style="margin-left:1rem">
+            <input type="Number"
+            name="year2" disabled
+           class="form-control text-body" [ngModel]="yearSelected1" 
+           placeholder=" Year"
+           required>
+        </div>
+
+        <div class="input-group" style="margin-left:1rem">
+          <select class="custom-select d-block w-100" name="branch"
+            ngModel required>
+              <option value="all" selected>All Branches</option>
+              <option value="comp">COMP</option>
+              <option value="it">IT</option>
+              <option value="entc">E&TC</option>
+           </select>                   
+        </div>
+  
+           <button type="submit" style="margin-left:1rem" [disabled]=frm1.invalid
+            class="btn btn-success form-control">Submit</button>
+            
+        </form>
+      </div> 
+      </nav>
+  
+      <table class="table table-striped" id="studentspdf">
+        <thead>
+          <tr class="bg-dark" style="color:#fff">
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Package(LPA)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of studentsList | filter:filter| paginate: { itemsPerPage: 10, currentPage: p };">
+            <td>{{student.firstName}} {{student.lastName}}</td>
+            <td>{{student.branch | uppercase}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.company.companyName}}</td>
+            <td>{{student.company.ctc}}</td>
+          </tr>
+        </tbody>
+       <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+    
+      </table>
+  </div>

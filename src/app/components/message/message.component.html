@@ -1,0 +1,42 @@
+<div class="container">
+   <div class="row">
+       <div class="col-md-6 offset-md-3">
+        <input type="text" class="form-control" name="Search" [(ngModel)]="filter"
+        placeholder="Search">
+       </div>
+   </div>
+</div>
+
+<div class="container" style="margin:2rem;" >
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center
+    pb-2 mb-3  sticky-top " style="border : 1px solid black;">
+     <pre></pre>
+     <div class="col-md-11 col-md-offset-2" >
+         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+             <div class="form-group">
+                 <label for="content">Message:</label>
+                 <textarea
+                        placeholder="Type a message here...."
+                         class="form-control"
+                         ngModel
+                         name="content"
+                         required></textarea>
+             </div>
+             <button class="btn btn-primary" [disabled]=f.invalid
+              type="submit">Send</button>
+         </form>
+     </div>
+   </div>
+
+<div *ngFor="let message of messages | filter:filter">
+   <div class="card">
+       <div class="card-header">RegID : {{message.student.regid}}</div>
+       <div class="card-body">{{message.content}}</div> 
+       <div class="card-footer">Sender : {{message.student.firstName}} {{message.student.lastName}}
+        <span style="float:right;" *ngIf="userId == message.student._id">
+               <a class="btn btn-danger" (click)="onDelete(message)">Delete</a>
+           </span>
+       </div>
+     </div><br>
+     </div>
+</div>

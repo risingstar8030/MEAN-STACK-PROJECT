@@ -1,0 +1,78 @@
+
+<div class="row" >
+  <div class="col-md-1"></div>
+<div class="col-md-10 ">
+   <div class="card text-body" style="border : 1px solid black">
+      <div class="card-header">
+       <div class="row">
+        <div class="col-md-4" style="font-weight: bold"><span class="text-secondary">Name :</span> {{student.firstName}} {{student.lastName}}</div>
+        <div class="col-md-4">
+
+          <input type="text" class="form-control" name="Search" [(ngModel)]="filter"
+          placeholder="Search Company">
+      
+        </div>
+        <div class="col-md-4" style="font-weight: bold"><span class="text-secondary">Reg ID:</span> {{student.regid}}
+          <span style="margin-left: 2rem;" *ngIf="isPlaced"
+          class="badge badge-success">Placed : {{placedCompanyName}} </span>
+          <span style="margin-left: 2rem;" *ngIf="!isPlaced"
+          class="badge badge-danger">Not yet Placed</span> </div>
+       </div>
+      </div>
+    <div class="card-body" style="height:65vh">
+     
+      
+
+          <table class="table table-striped">
+              <thead>
+                <tr class="bg-dark" style="color:#fff">
+                  <th>Company Name</th>
+                  <th>Package (LPA)</th>
+                  <th>Select Company</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let company of companiesAdded | filter:filter| paginate: { itemsPerPage: 4, currentPage: p };">
+                  <td>{{company.companyName}} </td>
+                  <td>{{company.ctc}}</td>
+                  <td><a (click)="addCompany(company)"
+                     class="btn btn-info btn-sm">Select</a></td>
+                </tr>
+              </tbody>
+             <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+            </table>
+            <hr>
+
+            
+
+            <form #frm="ngForm" class="form-inline"
+            (ngSubmit)="addStudentToCompany(frm)">
+                
+                    <div class="col-md-4 mb-3"> 
+                        <input type="text" class="form-control" 
+                          placeholder="Company Name" [ngModel]='companyName' 
+                          name="companyName" required [disabled]="isPlaced" >
+                      </div>
+        
+                      <div class="col-md-4 mb-3">
+                        <input type="Number" class="form-control" 
+                        placeholder="LPA"  name="ctc" [ngModel]="companyCtc"
+                         required [disabled]="isPlaced">
+                      </div>
+                      
+                      <div class="col-md-4 mb-3">
+                       <button type="submit" class="form-control btn-success btn-block" 
+                       [disabled]="isPlaced">Submit</button>
+                      </div>
+               
+            </form>
+
+
+
+    </div> 
+    <div class="card-footer" style="font-weight: bold"><span class="text-secondary">Email:</span>
+      {{student.email}}</div>
+   </div>
+</div>
+<div class="col-md-1"></div> 
+  </div>

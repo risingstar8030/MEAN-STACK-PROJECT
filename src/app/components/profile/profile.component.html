@@ -1,0 +1,64 @@
+ <!-- HEADER -->
+ <header id="main-header" class="py-2 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>
+            <i class="fas fa-user"></i>  Profile</h3>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-light">
+   
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header">
+              <h4>User Details</h4>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label>Registration ID</label>
+                       <input type="text" [ngModel]="user.regId" name="regid"
+                      class="form-control text-body"   
+                      disabled>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label>Department</label>
+                       <input type="text" [ngModel]="user.dept" name="dept"
+                      class="form-control text-body"  
+                      disabled>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" [ngModel]="user.name"
+                  name="name"  disabled>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" [ngModel]="user.email"
+                  name="email"  disabled>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h3>Profile Picture</h3>
+          <img src="../../../assets/student.png" alt="" class="d-block img-fluid mb-3">
+        </div>
+      </div>
+    </div>
+  </section>

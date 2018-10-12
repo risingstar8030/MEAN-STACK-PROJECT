@@ -1,0 +1,77 @@
+<div id="accordion">
+    <div class="card" style="border:1px solid black"
+     *ngFor="let item of upcomingCompanies | paginate: { itemsPerPage: 1, currentPage: p };">
+      <div class="card-header">
+        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+         <span class="text-success" style="font-weight:bold">Company : {{item.company.companyName}}</span>
+         <span class="text-info" style="font-weight:bold;margin-left: 2rem;">Date : {{item.company.date}}</span>
+         <span class="text-secondary" style="font-weight:bold ;margin-left: 2rem;">Package: {{item.company.ctc}} LPA</span>
+         <span class="text-success" style="font-weight:bold ;margin-left: 2rem;">Branch : </span>
+         <span *ngIf='item.company.comp' style="margin-left:5px;font-weight:bold" class="text-success">COMP</span>
+         <span *ngIf='item.company.it' style="margin-left:5px;font-weight:bold" class="text-success">IT</span>
+         <span *ngIf='item.company.entc' style="margin-left:5px;font-weight:bold" class="text-success">E&TC</span>
+        </a>
+      </div>
+      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bg-dark" style="color:#fff">
+                        <th>Criteria (CGPA)</th>
+                        <th>Backlog</th>
+                      </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                      <td>{{item.company.criteria}}</td>
+                      <td>{{item.company.backlog | uppercase}}</td>
+                   </tr>
+               </tbody>
+              </table>
+            <table class="table table-striped">
+                <thead>
+                  <tr class="bg-dark" style="color:#fff">
+                    <th>Activity</th>
+                    <th>Venue</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                   <td>{{item.company.activity1}}</td>
+                   <td>{{item.company.venue1}}</td>
+                </tr>
+                <tr>
+                    <td>{{item.company.activity2}}</td>
+                    <td>{{item.company.venue2}}</td>
+                 </tr>
+                 <tr>
+                    <td>{{item.company.activity3}}</td>
+                    <td>{{item.company.venue3}}</td>
+                 </tr>
+                 <tr>
+                    <td></td>
+                    <td></td>
+                 </tr>
+                </tbody>
+                <thead>
+                    <tr class="bg-dark" style="color:#fff">
+                      <th>Skills Required</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+              </table>
+              <div>
+                {{item.company.skills}}
+              </div> 
+              <hr>
+  
+  
+      </div> 
+      <div class="card-footer" style="font-weight: bold"><span class="text-secondary">Email:</span>
+        {{item.company.website}}
+      </div>
+ </div>      
+ </div>
+ <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+ </div>
+   

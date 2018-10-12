@@ -1,0 +1,29 @@
+
+
+.carousel-item {
+    height: 600px;
+  }
+  
+  .carousel-image-1 {
+    background: url('../../../assets/corousel2.jpg') 0 -150px;
+    background-size: cover;
+    
+  }
+  
+  .carousel-image-2 {
+    background: url('../../../assets/corousel4.jpg')no-repeat ;
+    background-size: cover;
+  }
+  #home-heading {
+    position: relative;
+    min-height: 200px;
+    background: url('../../../assets/bg.jpg') no-repeat;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #fff;
+  }
+  #main-footer {
+    background: #000;
+    color: #fff;
+  }

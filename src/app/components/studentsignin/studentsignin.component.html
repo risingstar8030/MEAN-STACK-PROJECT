@@ -1,0 +1,138 @@
+<div class="container-fluid bg" id="adminlogin">
+  <div class="row">
+     <div class="col-md-3 col-sm-4 col-xs-12"> </div>
+ <div class="col-md-6 col-sm-4 col-xs-12">
+
+    <form  class="form-container" style="border:none;margin-left: 8rem">
+        <div class="form-check-inline">
+          <img src='../../../assets/student.png' width="100px" height="100px">
+          <span style="margin:10px;"></span>
+          <label  for="radio1">
+            <input type="radio"   name="user"  (change)="toggleUser()" checked>
+          </label>
+        </div>
+        <span style="margin:20px;"></span>
+        <div class="form-check-inline">
+            <img src='../../../assets/manager.png' width="100px" height="100px">
+            <span style="margin:5px;"></span>
+          <label  for="radio2">
+            <input type="radio"  name="user"  (change)="toggleUser()">
+          </label>
+        </div>
+      </form>
+
+<!-- For student sign in-->
+   <form novalidate class="form-container" #frm="ngForm"
+           (ngSubmit)="onSubmitStudent(frm)" style="margin-top:3vh"
+           *ngIf="studentSelected" 
+     >
+
+       <h2>LOGIN STUDENT</h2>
+
+    <div class="form-group">
+      <label>Registration ID</label>
+      <input type="text" 
+          class="form-control text-body"
+          name="regid" 
+          placeholder="Registration ID"
+          [(ngModel)]="student.regid"
+          #studentRegid="ngModel"
+          minlength="8"
+          required>
+          <div *ngIf="studentRegid.errors?.required &&
+          studentRegid.touched" class="alert alert-danger">
+             Registration ID is required
+          </div>
+          <div *ngIf="studentRegid.errors?.minlength &&
+          studentRegid.touched" class="alert alert-danger">
+             Registration ID should be atleast 8 characters
+          </div>
+    </div>
+
+    <div class="form-group">
+      <label >Password</label>
+      <input type="password" 
+          class="form-control text-body" 
+          name="password" 
+          placeholder="Password"
+          [(ngModel)]="student.newpassword" 
+          #studentPass="ngModel"
+          minlength="5"
+          required>
+          <div *ngIf="studentPass.errors?.required &&
+          studentPass.touched" class="alert alert-danger">
+            Password is required
+          </div>
+          <div *ngIf="studentPass.errors?.minlength &&
+          studentPass.touched" class="alert alert-danger">
+             Password should be atleast 5 characters
+          </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block"  >Sign In</button>
+          </div><br>
+      <div ><span style="color:black">Haven't Registered yet ?</span>
+        <a href="" style="color:green;font-weight: bold" routerLink="/studentsignup"> Register</a></div>
+  </form>
+
+<!-- For admin sign in-->
+
+        <form novalidate class="form-container" #frm1="ngForm"
+        (ngSubmit)="onSubmitAdmin(frm1)" style="margin-top:3vh"
+        *ngIf="!studentSelected"
+        >
+
+        <h2>LOGIN ADMIN</h2>
+
+     <div class="form-group">
+        <label>Registration ID</label>
+        <input type="text" 
+            class="form-control text-body"
+            name="adminRegid" 
+            placeholder="Registration ID"
+            [(ngModel)]="admin.regid"
+            #adminRegid="ngModel"
+            minlength="8"
+            required>
+     <div *ngIf="adminRegid.errors?.required &&
+        adminRegid.touched" class="alert alert-danger">
+          Registration ID is required
+        </div>
+    <div *ngIf="adminRegid.errors?.minlength &&
+          adminRegid.touched" class="alert alert-danger">
+          Registration ID should be atleast 8 characters
+        </div>
+        </div>
+
+     <div class="form-group">
+        <label >Password</label>
+        <input type="password" 
+            class="form-control text-body" 
+            name="adminPass" 
+            placeholder="Password"
+            [(ngModel)]="admin.newpassword" 
+            #adminPass="ngModel"
+            minlength="5"
+            required>
+    <div *ngIf="adminPass.errors?.required &&
+        adminPass.touched" class="alert alert-danger">
+        Password is required
+        </div>
+        <div *ngIf="adminPass.errors?.minlength &&
+        adminPass.touched" class="alert alert-danger">
+          Password should be atleast 5 characters
+        </div>
+        </div>
+        <br>
+        <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block"  >Sign In</button>
+        </div><br>
+        <div ><span style="color:black">Haven't Registered yet ?</span>
+        <a href="" style="color:green;font-weight: bold" routerLink="/studentsignup"> Register</a></div>
+        </form>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-12"></div>
+</div>
+<div>
+</div>

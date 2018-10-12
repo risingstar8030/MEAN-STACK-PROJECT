@@ -1,0 +1,89 @@
+<!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+  <div class="container">
+
+    <a routerLink="/" class="navbar-brand"><span> <b>PICT Pune</b></span></a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/" class="nav-link" *ngIf='!isLoggedIn()'
+          >Login</a>
+        </li>
+
+        <li class="nav-item " routerLinkActive='active'>
+          <a routerLink="/studentsignup" *ngIf='!isLoggedIn()'class="nav-link"
+          >Register</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive='active'>
+          <a routerLink="/contact"  *ngIf='!isLoggedIn()' class="nav-link"
+          >Contact</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive='active'>
+            <a routerLink="/navbar/profile"  *ngIf='isLoggedIn()'
+             class="nav-link" >
+             <i class="fas fa-user-alt"></i> Profile</a>
+          </li>
+
+        <li class="nav-item">
+          <a routerLink=""  *ngIf='isLoggedIn()' (click)='logout()'
+           class="nav-link">
+           <i class="fas fa-sign-out-alt"></i>LogOut</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  SHOWCASE SLIDER -->
+ <div id="content">
+ <nav class="navbar navbar-expand-lg  navbar-dark bg-dark ">
+  <div class="container-fluid">
+
+      <button type="button" id="sidebarCollapse"
+      class="btn btn-info">
+          <i class="fas fa-align-left"></i>
+      </button>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav ml-auto">
+             
+        <li class="nav-item" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/" class="nav-link" *ngIf='!isLoggedIn()'
+          >Login</a>
+        </li>
+
+        <li class="nav-item " routerLinkActive='active'>
+          <a routerLink="/studentsignup" *ngIf='!isLoggedIn()'class="nav-link"
+          >Register</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive='active'>
+          <a routerLink="/contact"  *ngIf='!isLoggedIn()' class="nav-link"
+          >Contact</a>
+        </li>
+
+     <!--   <li class="nav-item" routerLinkActive='active'>
+            <a routerLink="/navbar/profile"  *ngIf='isLoggedIn()'
+             class="nav-link" >
+             <i class="fas fa-user-alt"></i> Profile</a>
+          </li> -->
+
+        <li class="nav-item">
+          <a routerLink=""  *ngIf='isLoggedIn()' (click)='logout()'
+           class="nav-link">
+           <i class="fas fa-sign-out-alt"></i>LogOut</a>
+        </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+</div>
